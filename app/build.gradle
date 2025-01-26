@@ -26,6 +26,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+
+    android.applicationVariants.configureEach { variant ->
+        variant.outputs.configureEach {
+            outputFileName = "AlwaysCreateUser_v${variant.versionName}.apk"
+        }
+    }
 }
 
 dependencies {
