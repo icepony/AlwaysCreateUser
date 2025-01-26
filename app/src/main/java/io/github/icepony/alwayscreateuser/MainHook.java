@@ -22,7 +22,10 @@ public class MainHook implements IXposedHookLoadPackage {
                     lpparam.classLoader,
                     "isCreationOverrideEnabled",
                     new XC_MethodHook() {
-                        protected void beforeHookedMethod(MethodHookParam param) { XposedBridge.log("D/" + TAG + " isCreationOverrideEnabled call");}
+                        protected void beforeHookedMethod(MethodHookParam param) {
+                            XposedBridge.log("D/" + TAG + " isCreationOverrideEnabled call");
+                        }
+
                         @Override
                         protected void afterHookedMethod(MethodHookParam param) {
                             param.setResult(true);
@@ -38,9 +41,9 @@ public class MainHook implements IXposedHookLoadPackage {
                     lpparam.classLoader,
                     "canAddMoreProfilesToUser",
                     new XC_MethodHook() {
-                        protected void beforeHookedMethod(MethodHookParam param) { XposedBridge.log("D/" + TAG + " canAddMoreProfilesToUser call");}
                         @Override
                         protected void afterHookedMethod(MethodHookParam param) {
+                            XposedBridge.log("D/" + TAG + " canAddMoreProfilesToUser call");
                             param.setResult(true);
                         }
                     }
@@ -53,9 +56,9 @@ public class MainHook implements IXposedHookLoadPackage {
                     lpparam.classLoader,
                     "isUserLimitReached",
                     new XC_MethodHook() {
-                        protected void beforeHookedMethod(MethodHookParam param) { XposedBridge.log("D/" + TAG + " isUserLimitReached call");}
                         @Override
                         protected void afterHookedMethod(MethodHookParam param) {
+                            XposedBridge.log("D/" + TAG + " isUserLimitReached call");
                             param.setResult(true);
                         }
                     }
@@ -68,9 +71,9 @@ public class MainHook implements IXposedHookLoadPackage {
                     lpparam.classLoader,
                     "canAddMoreManagedProfiles",
                     new XC_MethodHook() {
-                        protected void beforeHookedMethod(MethodHookParam param) { XposedBridge.log("D/" + TAG + " canAddMoreManagedProfiles call");}
                         @Override
                         protected void afterHookedMethod(MethodHookParam param) {
+                            XposedBridge.log("D/" + TAG + " canAddMoreManagedProfiles call");
                             param.setResult(true);
                         }
                     }
@@ -83,9 +86,9 @@ public class MainHook implements IXposedHookLoadPackage {
                     lpparam.classLoader,
                     "isUserLimitReachedLocked",
                     new XC_MethodHook() {
-                        protected void beforeHookedMethod(MethodHookParam param) { XposedBridge.log("D/" + TAG + " isUserLimitReachedLocked call");}
                         @Override
                         protected void afterHookedMethod(MethodHookParam param) {
+                            XposedBridge.log("D/" + TAG + " isUserLimitReachedLocked call");
                             param.setResult(true);
                         }
                     }
