@@ -12,7 +12,7 @@ public class MainHook implements IXposedHookLoadPackage {
     public static final String TAG = "AlwaysCreateUser";
 
     @Override
-    public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
+    public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) {
         if (!lpparam.packageName.equals("android")) return;
         XposedBridge.log("D/" + TAG + " handleLoadPackage");
 
@@ -22,8 +22,9 @@ public class MainHook implements IXposedHookLoadPackage {
                     lpparam.classLoader,
                     "isCreationOverrideEnabled",
                     new XC_MethodHook() {
+                        protected void beforeHookedMethod(MethodHookParam param) { XposedBridge.log("D/" + TAG + " isCreationOverrideEnabled call");}
                         @Override
-                        protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                        protected void afterHookedMethod(MethodHookParam param) {
                             param.setResult(true);
                         }
                     }
@@ -31,13 +32,15 @@ public class MainHook implements IXposedHookLoadPackage {
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Build.VERSION.SDK_INT <= Build.VERSION_CODES.TIRAMISU) { // Android 11 - 13
+            XposedBridge.log("D/" + TAG + " Android 11 or above detected, Hook isCreationOverrideEnabled");
             XposedHelpers.findAndHookMethod(
                     "com.android.server.pm.UserManagerService",
                     lpparam.classLoader,
                     "canAddMoreProfilesToUser",
                     new XC_MethodHook() {
+                        protected void beforeHookedMethod(MethodHookParam param) { XposedBridge.log("D/" + TAG + " canAddMoreProfilesToUser call");}
                         @Override
-                        protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                        protected void afterHookedMethod(MethodHookParam param) {
                             param.setResult(true);
                         }
                     }
@@ -50,8 +53,9 @@ public class MainHook implements IXposedHookLoadPackage {
                     lpparam.classLoader,
                     "isUserLimitReached",
                     new XC_MethodHook() {
+                        protected void beforeHookedMethod(MethodHookParam param) { XposedBridge.log("D/" + TAG + " isUserLimitReached call");}
                         @Override
-                        protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                        protected void afterHookedMethod(MethodHookParam param) {
                             param.setResult(true);
                         }
                     }
@@ -64,8 +68,9 @@ public class MainHook implements IXposedHookLoadPackage {
                     lpparam.classLoader,
                     "canAddMoreManagedProfiles",
                     new XC_MethodHook() {
+                        protected void beforeHookedMethod(MethodHookParam param) { XposedBridge.log("D/" + TAG + " canAddMoreManagedProfiles call");}
                         @Override
-                        protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                        protected void afterHookedMethod(MethodHookParam param) {
                             param.setResult(true);
                         }
                     }
@@ -78,8 +83,9 @@ public class MainHook implements IXposedHookLoadPackage {
                     lpparam.classLoader,
                     "isUserLimitReachedLocked",
                     new XC_MethodHook() {
+                        protected void beforeHookedMethod(MethodHookParam param) { XposedBridge.log("D/" + TAG + " isUserLimitReachedLocked call");}
                         @Override
-                        protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                        protected void afterHookedMethod(MethodHookParam param) {
                             param.setResult(true);
                         }
                     }
