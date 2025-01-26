@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Always create user</string>
-    <string name="xposed_desc">Remove some checks from pm create-user</string>
+    <string name="xposed_desc">Let pm create-user bypass some checks</string>
 </resources>
