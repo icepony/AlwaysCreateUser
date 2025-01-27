@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Always create user</string>
-    <string name="xposed_desc">Let you to bypass some restrictions when creating users</string>
+    <string name="xposed_desc">An Xposed Framework module that bypasses Android\'s user/profile creation limits</string>
 </resources>

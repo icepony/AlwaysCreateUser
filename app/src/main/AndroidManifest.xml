@@ -4,11 +4,10 @@
 
     <application
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AlwaysCreateUser"
+        tools:ignore="MissingApplicationIcon"
         tools:targetApi="31">
 
         <meta-data
@@ -19,10 +18,10 @@
             android:value="@string/xposed_desc" />
         <meta-data
             android:name="xposedminversion"
-            android:value="82" />
+            android:value="53" />
         <meta-data
             android:name="xposedscope"
-            android:resource="@array/xposed_scope" />
+            android:value="android" />
 
         <activity
             android:name=".MainActivity"
