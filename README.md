@@ -1,6 +1,6 @@
 # Always Create User
 
-[![Xposed Module](https://img.shields.io/badge/Xposed%20Module-✓-green.svg)](https://repo.xposed.info/)
+[![Xposed Module](https://img.shields.io/badge/Xposed%20Module-✓-green.svg)]
 [![Android Version](https://img.shields.io/badge/Android-4.2%2B-blue.svg)]()
 
 An Xposed Framework module that bypasses Android's user/profile creation limits
