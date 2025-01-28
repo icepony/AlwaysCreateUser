@@ -38,6 +38,7 @@ If you get error message java.lang.SecurityException: Neither user 2000 nor curr
   3. `am start-user <user id>`
 
  If all goes well, Island will show the app list.
+For more Users/Profiles , Follow the same procedure again...
 
 
 ## Compatibility Overview
