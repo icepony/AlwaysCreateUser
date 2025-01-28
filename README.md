@@ -21,7 +21,8 @@ An Xposed Framework module that bypasses Android's user/profile creation limits
 
 ## How to Setup for Island
  
-  ```pm create-user --profileOf 0 --managed Island```
+  1. ```shell
+pm create-user --profileOf 0 --managed Island```
 
 If succeed, you will be prompted with the ID of newly created user (usually 10 or above). Remember it and replace the <user id> in following commands with this ID.
 
