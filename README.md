@@ -33,7 +33,7 @@ If you got “Error: couldn’t create User”, execute setprop fw.max_users 10 
 
   3. `dpm set-profile-owner --user <user id> com.oasisfeng.island/.IslandDeviceAdminReceiver`
 
-If you get error message java.lang.SecurityException: Neither user 2000 nor current process has android.permission.MANAGE_DEVICE_ADMIN, please review the MIUI-specific Preparation”.
+If you get error message java.lang.SecurityException: Neither user 2000 nor current process has android.permission.MANAGE_DEVICE_ADMIN, please review the [MIUI-specific Preparation](https://island.oasisfeng.com/setup.html#manual-setup-for-island)”.
 
   3. `am start-user <user id>`
 
