@@ -19,6 +19,23 @@ An Xposed Framework module that bypasses Android's user/profile creation limits
 - "Cannot add more managed profiles for user"
 - "Error: couldn't create User"
 
+## How to Setup for Island
+ 
+  ```pm create-user --profileOf 0 --managed Island```
+
+If succeed, you will be prompted with the ID of newly created user (usually 10 or above). Remember it and replace the <user id> in following commands with this ID.
+
+If you got “Error: couldn’t create User”, execute setprop fw.max_users 10 first, then retry the command above.
+
+pm install-existing --user <user id> com.oasisfeng.island
+
+dpm set-profile-owner --user <user id> com.oasisfeng.island/.IslandDeviceAdminReceiver
+
+If you get error message java.lang.SecurityException: Neither user 2000 nor current process has android.permission.MANAGE_DEVICE_ADMIN, please review the MIUI-specific steps above in “Preparation”.
+
+am start-user <user id>
+
+
 ## Compatibility Overview
 
 | Android Version | Supported Methods           |
