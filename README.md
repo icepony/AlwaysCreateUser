@@ -1,7 +1,8 @@
 # Always Create User
 
-[![Xposed Module](https://img.shields.io/badge/Xposed%20Module-✓-green.svg)](https://repo.xposed.info/)
+[![Xposed Module](https://img.shields.io/badge/Xposed%20Module-✓-green.svg)]()
 [![Android Version](https://img.shields.io/badge/Android-4.2%2B-blue.svg)]()
+[![GitHub issues](https://img.shields.io/github/issues/icepony/AlwaysCreateUser)](https://github.com/icepony/AlwaysCreateUser/issues)
 
 An Xposed Framework module that bypasses Android's user/profile creation limits
 
@@ -19,28 +20,6 @@ An Xposed Framework module that bypasses Android's user/profile creation limits
 - "Cannot add more managed profiles for user"
 - "Error: couldn't create User"
 
-## How to Setup for Island
-
-   Open Terminal and Follow the Procedure 
- 
-  1. `pm create-user --profileOf 0 --managed Island`
-
-If succeed, you will be prompted with the ID of newly created user (usually 10 or above). Remember it and replace the <user id> in following commands with this ID.
-
-If you got “Error: couldn’t create User”, execute setprop fw.max_users 10 first, then retry the command above.
-
-  2. `pm install-existing --user <user id> com.oasisfeng.island`
-
-  3. `dpm set-profile-owner --user <user id> com.oasisfeng.island/.IslandDeviceAdminReceiver`
-
-If you get error message java.lang.SecurityException: Neither user 2000 nor current process has android.permission.MANAGE_DEVICE_ADMIN, please review the [MIUI-specific Preparation](https://island.oasisfeng.com/setup.html#manual-setup-for-island)”.
-
-  3. `am start-user <user id>`
-
- If all goes well, Island will show the app list.
-For more Users/Profiles , Follow the same procedure again...
-
-
 ## Compatibility Overview
 
 | Android Version | Supported Methods           |
@@ -53,5 +32,33 @@ For more Users/Profiles , Follow the same procedure again...
 
 ## Screenshot
 
-| ![Island](https://testingcf.jsdelivr.net/gh/Xposed-Modules-Repo/io.github.icepony.alwayscreateuser@main/docs/img/Island.png) | ![Thanox](https://testingcf.jsdelivr.net/gh/Xposed-Modules-Repo/io.github.icepony.alwayscreateuser@main/docs/img/Thanox.png) |
-|------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| ![Island](/docs/img/Island.png) | ![Thanox](/docs/img/Thanox.png) |
+|---------------------------------|---------------------------------|
+
+### How to Setup for Island
+
+Open Terminal and Follow the Procedure
+
+1. `pm create-user --profileOf 0 --managed Island`
+
+If succeed, you will be prompted with the ID of newly created user (usually 10 or above). Remember
+it and replace the <user id> in following commands with this ID.
+
+2. `pm install-existing --user <user id> com.oasisfeng.island`
+
+3. `dpm set-profile-owner --user <user id> com.oasisfeng.island/.IslandDeviceAdminReceiver`
+
+If you get error message java.lang.SecurityException: Neither user 2000 nor current process has
+android.permission.MANAGE_DEVICE_ADMIN, please review
+the [MIUI-specific Preparation](https://island.oasisfeng.com/setup.html#manual-setup-for-island)”.
+
+4. `am start-user <user id>`
+
+If all goes well, Island will show the app list.
+For more Users/Profiles , Follow the same procedure again...
+
+## Thanks
+
+- [Gemini](https://gemini.google.com/app)
+- [DeepSeek](https://www.deepseek.com/)
+- [CorePath](https://github.com/LSPosed/CorePatch)
