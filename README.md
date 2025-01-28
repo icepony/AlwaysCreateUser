@@ -44,9 +44,6 @@ Open Terminal and Follow the Procedure
 If succeed, you will be prompted with the ID of newly created user (usually 10 or above). Remember
 it and replace the <user id> in following commands with this ID.
 
-If you got “Error: couldn’t create User”, execute setprop fw.max_users 10 first, then retry the
-command above.
-
 2. `pm install-existing --user <user id> com.oasisfeng.island`
 
 3. `dpm set-profile-owner --user <user id> com.oasisfeng.island/.IslandDeviceAdminReceiver`
@@ -58,6 +55,7 @@ the [MIUI-specific Preparation](https://island.oasisfeng.com/setup.html#manual-s
 4. `am start-user <user id>`
 
 If all goes well, Island will show the app list.
+For more Users/Profiles , Follow the same procedure again...
 
 ## Thanks
 
