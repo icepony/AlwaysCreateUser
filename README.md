@@ -42,7 +42,7 @@ Open Terminal and Follow the Procedure
 1. `pm create-user --profileOf 0 --managed Island`
 
 If succeed, you will be prompted with the ID of newly created user (usually 10 or above). Remember
-it and replace the <user id> in following commands with this ID.
+it and replace the `<user id>` in following commands with this ID.
 
 2. `pm install-existing --user <user id> com.oasisfeng.island`
 
