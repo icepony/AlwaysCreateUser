@@ -1,7 +1,6 @@
 package io.github.icepony.alwayscreateuser;
 
 import android.os.Build;
-import android.util.Log;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
