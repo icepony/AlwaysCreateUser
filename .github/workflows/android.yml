@@ -23,7 +23,9 @@ jobs:
         cache: 'gradle'
 
     - name: Build with Gradle
-      run: ./gradlew assembleRelease assembleDebug
+      run: |
+        chmod +x ./gradlew
+        ./gradlew assembleRelease assembleDebug
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
