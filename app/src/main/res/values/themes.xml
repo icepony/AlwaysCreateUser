@@ -1,3 +1,0 @@
-<resources>
-    <style name="Theme.AlwaysCreateUser" parent="android:Theme.Material.Light.LightStatusBar" />
-</resources>
