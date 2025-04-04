@@ -1,6 +1,7 @@
 package io.github.icepony.alwayscreateuser;
 
 import android.os.Build;
+import android.util.Log;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
@@ -27,32 +28,46 @@ public class MainHook implements IXposedHookLoadPackage {
         hookMethod(lpparam, "isUserLimitReachedLocked", false, Build.VERSION_CODES.JELLY_BEAN_MR1, Build.VERSION_CODES.M);
     }
 
+    public static void log(String message) {
+//        if (BuildConfig.DEBUG)
+        XposedBridge.log("D/" + MainHook.TAG + ": " + message);
+    }
+
+    public static void logError(String message, Throwable t) {
+        XposedBridge.log("E/" + MainHook.TAG + ": " + message + "\n" + Log.getStackTraceString(t));
+    }
+
+    public static Class<?> findClass(String className, ClassLoader classLoader) {
+        try {
+            return XposedHelpers.findClass(className, classLoader);
+        } catch (Throwable e) {
+            logError("Cannot find Class: " + className, e);
+        }
+        return null;
+    }
+
+    public static void hookAllMethods(String className, ClassLoader classLoader, String methodName, XC_MethodHook callback) {
+        try {
+            Class<?> clazz = findClass(className, classLoader);
+            XposedBridge.hookAllMethods(clazz, methodName, callback);
+        } catch (Throwable e) {
+            logError("Cannot hook method: " + methodName, e);
+        }
+    }
+
     private void hookMethod(XC_LoadPackage.LoadPackageParam lpparam, String methodName, Object result, int minSdk, int maxSdk) {
         if (Build.VERSION.SDK_INT < minSdk || Build.VERSION.SDK_INT > maxSdk) {
             log("Skipping " + methodName + " for SDK " + Build.VERSION.SDK_INT);
             return;
         }
 
-        try {
-            Class<?> clazz = XposedHelpers.findClass("com.android.server.pm.UserManagerService", lpparam.classLoader);
-            XposedBridge.hookAllMethods(clazz, methodName, new XC_MethodHook() {
-                @Override
-                protected void beforeHookedMethod(MethodHookParam param) {
-                    log("Bypassing " + methodName);
-                    param.setResult(result);
-                }
-            });
-            log("Successfully hooked " + methodName);
-        } catch (Throwable t) {
-            logError("Failed to hook " + methodName, t);
-        }
-    }
-
-    private void log(String message) {
-        XposedBridge.log("D/" + TAG + ": " + message);
-    }
-
-    private void logError(String message, Throwable t) {
-        XposedBridge.log("E/" + TAG + ": " + message + "\n" + Log.getStackTraceString(t));
+        hookAllMethods("com.android.server.pm.UserManagerService", lpparam.classLoader, methodName, new XC_MethodHook() {
+            @Override
+            protected void beforeHookedMethod(MethodHookParam param) {
+                log("Bypassing " + methodName);
+                param.setResult(result);
+            }
+        });
+        log("Successfully hooked " + methodName);
     }
 }
