@@ -3,6 +3,10 @@ plugins {
 }
 
 android {
+    buildFeatures {
+        buildConfig = true
+    }
+
     namespace 'io.github.icepony.alwayscreateuser'
     compileSdk 35
 
@@ -17,9 +21,11 @@ android {
     buildTypes {
         release {
             minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
@@ -27,7 +33,7 @@ android {
 
     android.applicationVariants.configureEach { variant ->
         variant.outputs.configureEach {
-            outputFileName = "AlwaysCreateUser_v${variant.versionName}.apk"
+            outputFileName = "AlwaysCreateUser_v${variant.versionName}-${variant.buildType.name}.apk"
         }
     }
 }
