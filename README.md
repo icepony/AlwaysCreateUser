@@ -15,11 +15,14 @@ An Xposed Framework module that bypasses Android's user/profile creation limits
   - `Cannot add more managed profiles for user`
   - `Error: couldn't create User`
 - Support Android 4.2 through Android 14+
-- Compatible with popular profile apps (Island, Shelter, etc.)
+- Compatible with popular profile manager apps (Island, Shelter, etc.)
 
 ## Compatibility Overview
 
-| Android Version | Supported Methods           |
+The module hooks methods within [
+`com.android.server.power.batterysaver.BatterySaverStateMachine`](https://github.com/aosp-mirror/platform_frameworks_base/blob/54642d141f80d495a475b304052eedd2832fcdb1/services/core/java/com/android/server/pm/UserManagerService.java#L5733)
+
+| Android Version | Hook Methods List           |
 |-----------------|-----------------------------|
 | 14+             | `isCreationOverrideEnabled` |
 | 11-13           | `canAddMoreProfilesToUser`  |
@@ -29,38 +32,19 @@ An Xposed Framework module that bypasses Android's user/profile creation limits
 
 ## Screenshot
 
-| ![Island](/docs/img/Island.png) | ![Thanox](/docs/img/Thanox.png) |
-|---------------------------------|---------------------------------|
+| [Island](https://github.com/oasisfeng/island) | [Thanox](https://github.com/Tornaco/Thanox) |
+|-----------------------------------------------|---------------------------------------------|
+| ![Island](/docs/img/Island.png)               | ![Thanox](/docs/img/Thanox.png)             |
 
-### How to Setup for Island
+### [How to Setup for Island](https://island.oasisfeng.com/setup.html#manual-setup-for-island)
 
-Open Terminal and Follow the Procedure
+## Check Out My Other Project!
 
-1. `pm create-user --profileOf 0 --managed Island`
-
-   If succeed, you will be prompted with the ID of newly created user (usually 10 or above).
-   Remember it and replace the `<user id>` in following commands with this ID.
-
-   If you got "Error: couldn't create User", execute `setprop fw.max_users 10` first, then retry the
-   command above.
-
-2. `pm install-existing --user <user id> com.oasisfeng.island`
-
-3. `dpm set-profile-owner --user <user id> com.oasisfeng.island/.IslandDeviceAdminReceiver`
-
-   If you get error message
-   `java.lang.SecurityException: Neither user 2000 nor current process has android.permission.MANAGE_DEVICE_ADMIN`,
-   please review the MIUI-specific steps above in "Preparation".
-
-4. `am start-user <user id>`
-
-If all goes well, Island will show the app list.
-
-For more Users/Profiles , Follow the same procedure again...
+* **[AlwaysBatterySaver](https://github.com/icepony/AlwaysBatterySaver)**: An Xposed module that
+  prevents Android from automatically disabling Battery Saver mode when the device is charging.
 
 ## Thanks
 
-- [Gemini](https://gemini.google.com/app)
-- [DeepSeek](https://www.deepseek.com/)
-- [ChatGPT](https://chatgpt.com/)
-- [CorePatch](https://github.com/LSPosed/CorePatch)
+* Xposed Framework Developers
+* [CorePatch](https://github.com/LSPosed/CorePatch) (Inspiration for hook structure)
+* LLMs (Gemini, DeepSeek, ChatGPT) for assistance.
