@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Always create user</string>
     <string name="xposed_desc">An Xposed Framework module that bypasses Android\'s user/profile creation limits</string>
+
+    <string name="module_not_loaded">Module not loaded</string>
+    <string name="will_not_save">Any changes you make will not be saved</string>
+
 </resources>
