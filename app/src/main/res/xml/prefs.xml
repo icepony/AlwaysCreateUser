@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:key="general"
+        android:title="@string/category_general">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="enable_module"
+            android:summary="@string/enable_module_summary"
+            android:title="@string/enable_module_title" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="settings"
+        android:title="@string/category_settings">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="hook_isCreationOverrideEnabled"
+            android:summary="@string/hook_isCreationOverrideEnabled_summary"
+            android:title="@string/hook_isCreationOverrideEnabled_title" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="hook_canAddMoreProfilesToUser"
+            android:summary="@string/hook_canAddMoreProfilesToUser_summary"
+            android:title="@string/hook_canAddMoreProfilesToUser_title" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="hook_canAddMoreManagedProfiles"
+            android:summary="@string/hook_canAddMoreManagedProfiles_summary"
+            android:title="@string/hook_canAddMoreManagedProfiles_title" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="hook_isUserLimitReached"
+            android:summary="@string/hook_isUserLimitReached_summary"
+            android:title="@string/hook_isUserLimitReached_title" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="hook_isUserLimitReachedLocked"
+            android:summary="@string/hook_isUserLimitReachedLocked_summary"
+            android:title="@string/hook_isUserLimitReachedLocked_title" />
+    </PreferenceCategory>
+</PreferenceScreen>
