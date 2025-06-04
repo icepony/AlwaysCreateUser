@@ -20,7 +20,7 @@ An Xposed Framework module that bypasses Android's user/profile creation limits
 ## Compatibility Overview
 
 The module hooks methods within [
-`com.android.server.power.batterysaver.BatterySaverStateMachine`](https://github.com/aosp-mirror/platform_frameworks_base/blob/54642d141f80d495a475b304052eedd2832fcdb1/services/core/java/com/android/server/pm/UserManagerService.java#L5733)
+`UserManagerService.java`](https://github.com/aosp-mirror/platform_frameworks_base/blob/54642d141f80d495a475b304052eedd2832fcdb1/services/core/java/com/android/server/pm/UserManagerService.java#L5733)
 
 | Android Version | Hook Methods List           |
 |-----------------|-----------------------------|
